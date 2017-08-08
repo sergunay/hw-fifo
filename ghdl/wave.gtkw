@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Tue Aug  8 19:56:00 2017
+[*]
+[dumpfile] "/home/serg/Dropbox/ws/eda/fifo/ghdl/sim/fifo_tb.ghw"
+[dumpfile_mtime] "Tue Aug  8 19:55:06 2017"
+[dumpfile_size] 121163
+[savefile] "/home/serg/Dropbox/ws/eda/fifo/ghdl/wave.gtkw"
+[timestart] 0
+[size] 1366 744
+[pos] -1 -1
+*-32.358955 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.fifo_tb.
+[sst_width] 225
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 211
+@28
+top.fifo_tb.sim_clk
+@24
+#{top.fifo_tb.sim_fifo_in_data[7:0]} top.fifo_tb.sim_fifo_in_data[7] top.fifo_tb.sim_fifo_in_data[6] top.fifo_tb.sim_fifo_in_data[5] top.fifo_tb.sim_fifo_in_data[4] top.fifo_tb.sim_fifo_in_data[3] top.fifo_tb.sim_fifo_in_data[2] top.fifo_tb.sim_fifo_in_data[1] top.fifo_tb.sim_fifo_in_data[0]
+#{top.fifo_tb.fifo_out_data[7:0]} top.fifo_tb.fifo_out_data[7] top.fifo_tb.fifo_out_data[6] top.fifo_tb.fifo_out_data[5] top.fifo_tb.fifo_out_data[4] top.fifo_tb.fifo_out_data[3] top.fifo_tb.fifo_out_data[2] top.fifo_tb.fifo_out_data[1] top.fifo_tb.fifo_out_data[0]
+@28
+top.fifo_tb.sim_fifo_rd_en
+top.fifo_tb.sim_fifo_wr_en
+[pattern_trace] 1
+[pattern_trace] 0
