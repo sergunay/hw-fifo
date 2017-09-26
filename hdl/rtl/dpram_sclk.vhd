@@ -3,25 +3,21 @@
 -- Project Name		Medusa
 --*****************************************************************************
 -- Doxygen labels
---! @file 			lut.vhd
---! @brief 			a short description what can be found in the file
---! @details 		detailed description
+--! @file 			dpram_sclk.vhd
+--! @brief 			Dual port RAM with single clock
+--! @details 		
 --! @author 		Selman Ergünay
 --! @date 			05.06.2017
---*****************************************************************************
--- Revision History:
---   Rev 0.0 - File created.
--- TODO : out 
 --*****************************************************************************
 -- Naming Conventions:
 --   active low signals:                    "*_n"
 --   clock signals:                         "clk", "clk_div#", "clk_#x"
 --   reset signals:                         "rst", "rst_n"
---   generics:                              "C_* -all UPPERCASE"
---   state machine current/next state:      "*_cs" / "*_ns"         
+--	 generics-constants: 					"UPPERCASE"-"C_UPPERCASE"
+-- 	 state machine current/next state: 		"state_reg" / "state_next"     
 --   pipelined or register delay signals:   "*_d#"
 --   counter signals:                       "*cnt*"
---	 data valid signals						"*_vld"
+--	 data valid/request/acknowledge			"*_vld", "*_req", "*_ack"
 --   internal version of output port:       "*_i"
 --   ports:                                 "- Names begin with Uppercase"
 --   processes:                             "*_PROC"
@@ -32,19 +28,20 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 --------------------------------------------------------------------------------
 entity dpram_sclk is
+--------------------------------------------------------------------------------
 	generic(
 		DATA_WIDTH 	: natural := 8;
 		ADDR_WIDTH 	: natural := 8);
 	port(
 		Clk		: in std_logic;
 		-- Read port
-		Rd_en	: in std_logic;
-		Rd_addr	: in std_logic_vector(ADDR_WIDTH-1 downto 0);
-		Rd_data	: out std_logic_vector(DATA_WIDTH-1 downto 0);
+		Rd_en	: in std_logic;									--! Read enable
+		Rd_addr	: in std_logic_vector(ADDR_WIDTH-1 downto 0);	--! Read address
+		Rd_data	: out std_logic_vector(DATA_WIDTH-1 downto 0); 	--! Read data
 		-- Write port
-		Wr_en	: in std_logic;
-		Wr_addr	: in std_logic_vector(ADDR_WIDTH-1 downto 0);
-		Wr_data	: in std_logic_vector(DATA_WIDTH-1 downto 0));
+		Wr_en	: in std_logic;									--! Write enable
+		Wr_addr	: in std_logic_vector(ADDR_WIDTH-1 downto 0);	--! Write address
+		Wr_data	: in std_logic_vector(DATA_WIDTH-1 downto 0));	--! Write data
 end entity dpram_sclk;
 --------------------------------------------------------------------------------
 architecture rtl of dpram_sclk is

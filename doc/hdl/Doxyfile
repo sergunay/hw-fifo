@@ -2,16 +2,15 @@
 # My configurations:
 #---------------------------------------------------------------------------
 PROJECT_NAME           = "FIFO"
-PROJECT_NUMBER         =
-PROJECT_BRIEF          =
-OUTPUT_DIRECTORY       =
+PROJECT_BRIEF          = "A Generic FIFO Implementation"
 OPTIMIZE_OUTPUT_VHDL   = YES
-INPUT                  = ../../hdl/
+INPUT                  = ../../hdl/ ../../README.md 
+USE_MDFILE_AS_MAINPAGE = README.md
 RECURSIVE              = YES
 IMAGE_PATH             = ../img/
 SOURCE_BROWSER         = YES
 INLINE_SOURCES         = YES
-GENERATE_TREEVIEW      = YES
+GENERATE_TREEVIEW      = NO
 
 # Doxyfile 1.8.11
 
@@ -53,7 +52,7 @@ DOXYFILE_ENCODING      = UTF-8
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-#PROJECT_NUMBER         =
+PROJECT_NUMBER         =
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -73,7 +72,7 @@ PROJECT_LOGO           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-#OUTPUT_DIRECTORY       =
+OUTPUT_DIRECTORY       =
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -935,7 +934,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE =
+#USE_MDFILE_AS_MAINPAGE =
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing

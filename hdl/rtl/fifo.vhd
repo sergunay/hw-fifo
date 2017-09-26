@@ -4,24 +4,20 @@
 --*****************************************************************************
 -- Doxygen labels
 --! @file 			fifo.vhd
---! @brief 			a short description what can be found in the file
---! @details 		detailed description
+--! @brief 			A generic FIFO implementation with Empty and Full control signals
+--! @details 		
 --! @author 		Selman Ergünay
 --! @date 			05.06.2017
---*****************************************************************************
--- Revision History:
---   Rev 0.0 - File created.
--- TODO : out 
 --*****************************************************************************
 -- Naming Conventions:
 --   active low signals:                    "*_n"
 --   clock signals:                         "clk", "clk_div#", "clk_#x"
 --   reset signals:                         "rst", "rst_n"
---   generics:                              "C_* -all UPPERCASE"
---   state machine current/next state:      "*_cs" / "*_ns"         
+--	 generics-constants: 					"UPPERCASE"-"C_UPPERCASE"
+-- 	 state machine current/next state: 		"state_reg" / "state_next"     
 --   pipelined or register delay signals:   "*_d#"
 --   counter signals:                       "*cnt*"
---	 data valid signals						"*_vld"
+--	 data valid/request/acknowledge			"*_vld", "*_req", "*_ack"
 --   internal version of output port:       "*_i"
 --   ports:                                 "- Names begin with Uppercase"
 --   processes:                             "*_PROC"
@@ -32,6 +28,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 --------------------------------------------------------------------------------
 entity fifo is 
+--------------------------------------------------------------------------------
 	generic(
 		DATA_WIDTH 	: natural := 8;
 		ADDR_WIDTH 	: natural := 4;
@@ -40,24 +37,25 @@ entity fifo is
 		Clk		: in std_logic;
 		Rst		: in std_logic;
 		--Write agent:
-		D_in 	: in std_logic_vector(DATA_WIDTH-1 downto 0);
-		Wr_en	: in std_logic;
-		Full 	: out std_logic;
+		D_in 	: in std_logic_vector(DATA_WIDTH-1 downto 0); 	--! Write data
+		Wr_en	: in std_logic;									--! Write enable
+		Full 	: out std_logic;								--! FIFO full flag
 		--Read agent
-		D_out	: out std_logic_vector(DATA_WIDTH-1 downto 0);
-		Rd_en 	: in std_logic;
-		Empty 	: out std_logic);
+		D_out	: out std_logic_vector(DATA_WIDTH-1 downto 0);	--! Read data
+		Rd_en 	: in std_logic;									--! Read enable	
+		Empty 	: out std_logic	:= '1');						--! FIFO empty flag
 end entity fifo;
 --------------------------------------------------------------------------------
 architecture rtl of fifo is
-	signal wr_addr      : unsigned(ADDR_WIDTH-1 downto 0);
-	signal rd_addr      : unsigned(ADDR_WIDTH-1 downto 0);
+--------------------------------------------------------------------------------
+	signal wr_addr      : unsigned(ADDR_WIDTH-1 downto 0) := (others=>'0');
+	signal rd_addr      : unsigned(ADDR_WIDTH-1 downto 0) := (others=>'0');
 	signal wr_data      : std_logic_vector(DATA_WIDTH-1 downto 0);
 	signal rd_data      : std_logic_vector(DATA_WIDTH-1 downto 0);
-	signal full_next    : std_logic;   
-	signal full_reg     : std_logic;   
-	signal empty_next   : std_logic;   
-	signal empty_reg    : std_logic;   
+	signal full_next    : std_logic := '0';
+	signal full_reg     : std_logic := '0';
+	signal empty_next   : std_logic := '1';   
+	signal empty_reg    : std_logic := '1';   
 	signal last_op_reg  : std_logic;   
 	signal last_op_next : std_logic;   
 	signal ram_wr_en    : std_logic;   
@@ -76,6 +74,7 @@ architecture rtl of fifo is
 			Wr_addr	: in std_logic_vector(ADDR_WIDTH-1 downto 0);
 			Wr_data	: in std_logic_vector(DATA_WIDTH-1 downto 0));
 	end component;
+--------------------------------------------------------------------------------
 begin
 --------------------------------------------------------------------------------
 	I_DPRAM_SCLK: dpram_sclk
@@ -161,8 +160,6 @@ begin
 	Full 	<= full_reg;
 --------------------------------------------------------------------------------
 end architecture rtl;
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --component fifo
 --	generic(
