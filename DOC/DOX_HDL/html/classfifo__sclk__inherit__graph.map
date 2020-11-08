@@ -1,5 +1,0 @@
-<map id="fifo_sclk" name="fifo_sclk">
-<area shape="rect" id="node1" title=" " alt="" coords="16,80,92,107"/>
-<area shape="rect" id="node3" href="$classfifo__sclk__tb.html" title=" " alt="" coords="6,155,102,181"/>
-<area shape="rect" id="node2" href="$classdpram__sclk.html" title=" " alt="" coords="5,5,103,32"/>
-</map>
