@@ -1,7 +1,5 @@
-# ignore ModelSim generated files and directories (temp files and so on)
+# ModelSim
 [_@]*
-
-# ignore compilation output of ModelSim
 *.asm64
 *.rw64
 *.mti
@@ -13,38 +11,42 @@
 *.jpg
 *.html
 *.bsf
-
-# ignore simulation output of ModelSim
 wlf*
 *.wlf
 *.vstf
 *.ucdb
+tcl_stacktrace.txt
 cov*/
 transcript*
 sc_dpiheader.h
 vsim.dbg
-
-MSIM/in/
-MSIM/out/
+*.csd
+MSIM/IN/
+MSIM/OUT/
 #-------------------------------------------------------------------------------
+# Vivado 
+VIVADO/PRE_SYNTH
+VIVADO/SYNTH
+VIVADO/IMPL
+VIVADO/WORK/*
+!*.wcfg
+#-------------------------------------------------------------------------------
+# Doxygen
 DOC/DOX_HDL/html/
 DOC/DOX_HDL/latex/
 #-------------------------------------------------------------------------------
-PYTHON/in/
-PYTHON/out/
-PYTHON/lutgen/in/
-PYTHON/lutgen/out/
-PYTHON/tvgen/in/
-PYTHON/tvgen/out/
+# Python
+PYTHON/IN/
+PYTHON/OUT/
+__pycache__
 #-------------------------------------------------------------------------------
-# ghdl
+# GHDL
 *.o
 *.cf
 *.ghw
 GHDL/sim/
-GHDL/in/
+GHDL/IN/
 #-------------------------------------------------------------------------------
+# Others
 *.swp
 *.xlsx
-*.tex
-*.html
